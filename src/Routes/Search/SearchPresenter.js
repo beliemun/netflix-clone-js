@@ -1,3 +1,3 @@
-const SearchPresenter = () => "Search";
+const SearchPresenter = () => "SEARCH!";
 
 export default SearchPresenter;

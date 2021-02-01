@@ -1,27 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TVPresenter from "./TVPresenter";
 
-class TVContainer extends React.Component {
-  state = {
-    topRated: null,
-    popular: null,
-    airingToday: null,
-    loading: null,
-    error: null,
-  };
+const TVContainer = () => {
+  const [topRated, setTopRated] = useState(null);
+  const [popular, setPopular] = useState(null);
+  const [airingToday, setAiringToday] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  render() {
-    const { topRated, popular, airingToday, loading, error } = this.state;
-    return (
-      <TVPresenter
-        topRated={topRated}
-        popular={popular}
-        airingToday={airingToday}
-        loading={loading}
-        error={error}
-      />
-    );
-  }
+  return (
+    <TVPresenter
+      topRated={topRated}
+      popular={popular}
+      airingToday={airingToday}
+      loading={loading}
+      error={error}
+    />
+  );
 }
 
 export default TVContainer;

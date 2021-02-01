@@ -1,55 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HomePresenter from "./HomePresenter";
 import { moviesAPI } from "api";
 
-class HomeContainer extends React.Component {
-  state = {
-    nowPlaying: null,
-    upComing: null,
-    popular: null,
-    loading: true,
-    error: null,
-  };
+const HomeContainer = () => {
+  const [nowPlaying, setNowPlaying] = useState(null);
+  const [upComing, setUpcoming] = useState(null);
+  const [popular, setPopular] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  async componentDidMount() {
+  useEffect(() => {
+    loadDatas();
+  }, [])
+
+  const loadDatas = async () => {
     try {
-      const {
-        data: { results: nowPlaying },
-      } = await moviesAPI.nowPlaying();
-      const {
-        data: { results: upComing },
-      } = await moviesAPI.upComing();
-      const {
-        data: { results: popular },
-      } = await moviesAPI.popular();
-      this.setState({
-        nowPlaying,
-        upComing,
-        popular,
-      });
+      const { data: { results: nowPlaying } } = await moviesAPI.nowPlaying();
+      const { data: { results: upComing } } = await moviesAPI.upComing();
+      const { data: { results: popular } } = await moviesAPI.popular();
+      setNowPlaying(nowPlaying);
+      setUpcoming(upComing);
+      setPopular(popular);
     } catch {
-      this.setState({
-        error: "Can't find moives information.",
-      });
+      setError("Can't find moives information.");
     } finally {
-      this.setState({
-        loading: false,
-      });
+      setLoading(false);
     }
   }
 
-  render() {
-    const { nowPlaying, upComing, popular, loading, error } = this.state;
-    return (
-      <HomePresenter
-        nowPlaying={nowPlaying}
-        upComing={upComing}
-        popular={popular}
-        loading={loading}
-        error={error}
-      />
-    );
-  }
+  return (
+    <HomePresenter
+      nowPlaying={nowPlaying}
+      upComing={upComing}
+      popular={popular}
+      loading={loading}
+      error={error}
+    />
+  );
 }
 
 export default HomeContainer;

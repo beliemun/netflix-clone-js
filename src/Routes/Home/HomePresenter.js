@@ -1,3 +1,3 @@
-const HomePresenter = () => "HOME";
+const HomePresenter = () => "HOME!";
 
 export default HomePresenter;
