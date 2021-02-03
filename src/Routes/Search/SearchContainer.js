@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchPresenter from "./SearchPresenter";
-import { moviesAPI, tvAPI } from "api";
+import { movieAPI, tvAPI } from "api";
 
 const SearchContainer = () => {
   const [movieResults, setMovieResults] = useState(null);
@@ -21,7 +21,7 @@ const SearchContainer = () => {
 
   const searchByTerm = async () => {
     try {
-      const { data: { results: movieResults } } = await moviesAPI.search(searchTerm);
+      const { data: { results: movieResults } } = await movieAPI.search(searchTerm);
       const { data: { results: tvResults } } = await tvAPI.search(searchTerm);
       setMovieResults(movieResults);
       setTvResults(tvResults);

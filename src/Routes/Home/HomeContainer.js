@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HomePresenter from "./HomePresenter";
-import { moviesAPI } from "api";
+import { movieAPI } from "api";
 
 const HomeContainer = () => {
   const [nowPlaying, setNowPlaying] = useState(null);
@@ -15,9 +15,9 @@ const HomeContainer = () => {
 
   const loadDatas = async () => {
     try {
-      const { data: { results: nowPlaying } } = await moviesAPI.nowPlaying();
-      const { data: { results: upComing } } = await moviesAPI.upComing();
-      const { data: { results: popular } } = await moviesAPI.popular();
+      const { data: { results: nowPlaying } } = await movieAPI.nowPlaying();
+      const { data: { results: upComing } } = await movieAPI.upComing();
+      const { data: { results: popular } } = await movieAPI.popular();
       setNowPlaying(nowPlaying);
       setUpcoming(upComing);
       setPopular(popular);
@@ -27,6 +27,8 @@ const HomeContainer = () => {
       setLoading(false);
     }
   }
+
+
 
   return (
     <HomePresenter
