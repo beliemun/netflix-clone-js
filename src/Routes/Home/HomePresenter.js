@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Section from "Components/Section";
 import Loader from "Components/Loader";
+import { movieAPI } from "api";
 
 const Container = styled.div``;
 
@@ -14,13 +15,19 @@ const HomePresenter = ({
     loading }) => loading ? <Loader /> :
         <Container>
             {nowPlaying && nowPlaying.length > 0 && (
-                <Section title={"Now Playing"}>{nowPlaying.map(moive => <span>{moive.title}</span>)}</Section>
+                <Section title={"Now Playing"}>{nowPlaying.map(movie =>
+                    <span key={movie.id}>{movie.title}</span>)}
+                </Section>
             )}
             {upComing && upComing.length > 0 && (
-                <Section title={"Up Coming"}>{upComing.map(moive => <span>{moive.title}</span>)}</Section>
+                <Section title={"Up Coming"}>{upComing.map(movie =>
+                    <span key={movie.id}>{movie.title}</span>)}
+                </Section>
             )}
             {popular && popular.length > 0 && (
-                <Section title={"Popular Shows"}>{popular.map(moive => <span>{moive.title}</span>)}</Section>
+                <Section title={"Popular Shows"}>{popular.map(movie =>
+                    <span key={movie.id}>{movie.title}</span>)}
+                </Section>
             )}
         </Container>
 

@@ -5,22 +5,28 @@ import { movieAPI, tvAPI } from "api";
 const SearchContainer = () => {
   const [movieResults, setMovieResults] = useState(null);
   const [tvResults, setTvResults] = useState(null);
-  const [searchTerm] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    handleSubmit();
   }, [])
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (searchTerm !== "") {
       searchByTerm();
     }
   }
 
+  const updateTerm = (event) => {
+    const { target: { value } } = event;
+    setSearchTerm(value);
+  }
+
   const searchByTerm = async () => {
     try {
+      setLoading(true);
       const { data: { results: movieResults } } = await movieAPI.search(searchTerm);
       const { data: { results: tvResults } } = await tvAPI.search(searchTerm);
       setMovieResults(movieResults);
@@ -40,6 +46,7 @@ const SearchContainer = () => {
       loading={loading}
       error={error}
       handleSubmit={handleSubmit}
+      updateTerm={updateTerm}
     />
   );
 }
