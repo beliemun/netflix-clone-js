@@ -18,6 +18,8 @@ const Title = styled.h3`
 
 const Grid = styled.div`
     line-height:18px;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(min-content, 200px));
 `;
 
 const Section = ({ title, children }) => (
