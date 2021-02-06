@@ -6,7 +6,7 @@ import DetailPresenter from "./DetailPresenter";
 const DetailContainer = (props) => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { location: { pathname } } = props;
   const [isMovie] = useState(pathname.includes("/movie/"));
 
@@ -40,12 +40,15 @@ const DetailContainer = (props) => {
     }
   }
 
+  useEffect(() => {
+    console.log("loading : ", loading);
+  }, [loading])
+
   return (
     <DetailPresenter
       result={result}
-      // searchTerm={searchTerm}
-      loading={loading}
       error={error}
+      loading={loading}
     />
   );
 }

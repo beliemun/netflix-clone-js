@@ -6,11 +6,13 @@ import Section from "Components/Section";
 import Message from "Components/Message";
 import Poster from "Components/Poster";
 
-const Container = styled.div``;
+const Container = styled.div`
+    padding-top:20px;
+`;
 
 const Form = styled.form`
     width: 100%;
-    padding: 0 20px;
+    padding-left:20px;
 `;
 
 const Input = styled.input`

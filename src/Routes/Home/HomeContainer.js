@@ -28,8 +28,6 @@ const HomeContainer = () => {
     }
   }
 
-
-
   return (
     <HomePresenter
       nowPlaying={nowPlaying}
