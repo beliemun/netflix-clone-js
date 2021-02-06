@@ -5,7 +5,7 @@ import { movieAPI, tvAPI } from "api";
 const SearchContainer = () => {
   const [movieResults, setMovieResults] = useState(null);
   const [tvResults, setTvResults] = useState(null);
-  const [searchTerm, setSearchTerm] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 

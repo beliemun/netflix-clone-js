@@ -9,8 +9,8 @@ const DetailPresenter = ({
 
 DetailPresenter.propTypes = {
     result: PropTypes.object,
-    error: PropTypes.string.isRequired,
-    loading: PropTypes.string
+    error: PropTypes.string,
+    loading: PropTypes.bool.isRequired
 }
 
 export default DetailPresenter;

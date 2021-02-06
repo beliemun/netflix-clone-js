@@ -8,15 +8,16 @@ const Container = styled.div`
     justify-content:center;
 `;
 
-const Clock = styled.span`
-    font-size:30px;
-    margin:30px;
+const Text = styled.span`
+    color: #bdc3c7;
+    font-size:20px;
+    font-weight: 600;
+    line-height:30px;
 `;
-
 
 const Loader = () =>
     <Container>
-        <Clock role="img" aria-label="Loading">⏰</Clock>
+        <Text>Loading..</Text>
     </Container>
 
 export default Loader;
