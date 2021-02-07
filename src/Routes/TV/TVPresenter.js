@@ -27,7 +27,7 @@ const TVPresenter = ({
                             imageUrl={show.poster_path}
                             rating={show.vote_average}
                             year={show.first_air_date && show.first_air_date.substring(0, 4)}
-                            isMovie={true}
+                            isMovie={false}
                         />
                     )}
                 </Section>
@@ -42,7 +42,7 @@ const TVPresenter = ({
                             imageUrl={show.poster_path}
                             rating={show.vote_average}
                             year={show.first_air_date && show.first_air_date.substring(0, 4)}
-                            isMovie={true}
+                            isMovie={false}
                         />
                     )}
                 </Section>
@@ -57,7 +57,7 @@ const TVPresenter = ({
                             imageUrl={show.poster_path}
                             rating={show.vote_average}
                             year={show.first_air_date && show.first_air_date.substring(0, 4)}
-                            isMovie={true}
+                            isMovie={false}
                         />
                     )}
                 </Section>
