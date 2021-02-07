@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.js": "/nicoflix/static/js/main.f298883b.chunk.js",
+    "main.js.map": "/nicoflix/static/js/main.f298883b.chunk.js.map",
+    "runtime-main.js": "/nicoflix/static/js/runtime-main.d5fddb5b.js",
+    "runtime-main.js.map": "/nicoflix/static/js/runtime-main.d5fddb5b.js.map",
+    "static/js/2.4e524eef.chunk.js": "/nicoflix/static/js/2.4e524eef.chunk.js",
+    "static/js/2.4e524eef.chunk.js.map": "/nicoflix/static/js/2.4e524eef.chunk.js.map",
+    "index.html": "/nicoflix/index.html",
+    "static/js/2.4e524eef.chunk.js.LICENSE.txt": "/nicoflix/static/js/2.4e524eef.chunk.js.LICENSE.txt",
+    "static/media/noimage.jpg": "/nicoflix/static/media/noimage.d644f35e.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d5fddb5b.js",
+    "static/js/2.4e524eef.chunk.js",
+    "static/js/main.f298883b.chunk.js"
+  ]
+}
