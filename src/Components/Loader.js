@@ -17,7 +17,6 @@ const Text = styled.span`
 
 const Loader = () =>
     <Container>
-        {console.log("loader")}
         <Text>Loading..</Text>
     </Container>
 

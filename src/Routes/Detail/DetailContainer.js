@@ -1,28 +1,20 @@
 import { movieAPI, tvAPI } from "api";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import DetailPresenter from "./DetailPresenter";
-
 
 const DetailContainer = (props) => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { location: { pathname } } = props;
+
+  const {
+    location: { pathname },
+    match: { params: { id } }
+  } = props;
+  const [parsedId] = useState(parseInt(id));
   const [isMovie] = useState(pathname.includes("/movie/"));
 
-  useEffect(() => {
-    const {
-      match: { params: { id } },
-      history: { push }
-    } = props;
-    const parsedId = parseInt(id);
-    if (isNaN(parsedId)) {
-      return push("/");
-    }
-    loadDatas(parsedId);
-  }, [props]);
-
-  const loadDatas = async (parsedId) => {
+  const loadDatas = useCallback(async (parsedId) => {
     let result = null;
     try {
       if (isMovie) {
@@ -38,11 +30,15 @@ const DetailContainer = (props) => {
       setLoading(false);
       setResult(result);
     }
-  }
+  }, [isMovie]);
 
   useEffect(() => {
-    console.log("loading : ", loading);
-  }, [loading])
+    const { history: { push } } = props;
+    if (isNaN(parsedId)) {
+      return push("/");
+    }
+    loadDatas(parsedId);
+  }, [props, loadDatas, parsedId]);
 
   return (
     <DetailPresenter

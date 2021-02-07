@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Helmet from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Section from "Components/Section";
 import Loader from "Components/Loader";
 import Message from "Components/Message";
@@ -17,7 +17,7 @@ const HomePresenter = ({
     popular,
     error,
     loading }) => loading ? <Loader /> :
-        <>
+        <HelmetProvider>
             <Helmet>
                 <title>Movies | Nicoflix</title>
             </Helmet>
@@ -66,7 +66,7 @@ const HomePresenter = ({
                 )}
                 {error && <Message text={error} color={"#e74c3c"} />}
             </Container>
-        </>
+        </HelmetProvider>
 HomePresenter.propTypes = {
     nowPlaying: PropTypes.array,
     upComing: PropTypes.array,

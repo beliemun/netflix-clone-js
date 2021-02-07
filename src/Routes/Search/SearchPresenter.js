@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Helmet from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Loader from "Components/Loader";
 import Section from "Components/Section";
 import Message from "Components/Message";
@@ -30,7 +30,7 @@ const SearchPresenter = ({
     loading,
     handleSubmit,
     updateTerm }) =>
-    <>
+    <HelmetProvider>
         <Helmet>
             <title>Movies | Nicoflix</title>
         </Helmet>
@@ -74,7 +74,7 @@ const SearchPresenter = ({
                     <Message text={`Nothing found`} color="#bdc3c7" />}
             </>}
         </Container>
-    </>
+    </HelmetProvider>
 
 SearchPresenter.propTypes = {
     movieResults: PropTypes.array,

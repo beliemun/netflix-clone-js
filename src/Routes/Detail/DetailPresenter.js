@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Helmet from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Loader from "Components/Loader";
 
 const Container = styled.div`
@@ -72,14 +72,14 @@ const DetailPresenter = ({
     error,
     loading }) => loading ?
         (
-            <>
+            <HelmetProvider>
                 <Helmet>
                     <title> Loading.. | Nicoflix</title>
                 </Helmet>
                 <Loader />
-            </>
+            </HelmetProvider>
         ) : (
-            <>
+            <HelmetProvider>
                 <Helmet>
                     {result && (
                         <title>{result.original_title ? result.original_title : result.original_name} | Nicoflix</title>
@@ -112,7 +112,7 @@ const DetailPresenter = ({
                         </>
                     )}
                 </Container>
-            </>
+            </HelmetProvider>
         );
 
 DetailPresenter.propTypes = {
