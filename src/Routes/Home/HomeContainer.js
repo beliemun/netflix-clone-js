@@ -11,13 +11,20 @@ const HomeContainer = () => {
 
   useEffect(() => {
     loadDatas();
-  }, [])
+    return () => setLoading(false);
+  }, []);
 
   const loadDatas = async () => {
     try {
-      const { data: { results: nowPlaying } } = await movieAPI.nowPlaying();
-      const { data: { results: upComing } } = await movieAPI.upComing();
-      const { data: { results: popular } } = await movieAPI.popular();
+      const {
+        data: { results: nowPlaying },
+      } = await movieAPI.nowPlaying();
+      const {
+        data: { results: upComing },
+      } = await movieAPI.upComing();
+      const {
+        data: { results: popular },
+      } = await movieAPI.popular();
       setNowPlaying(nowPlaying);
       setUpcoming(upComing);
       setPopular(popular);
@@ -26,7 +33,7 @@ const HomeContainer = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <HomePresenter
@@ -37,6 +44,6 @@ const HomeContainer = () => {
       error={error}
     />
   );
-}
+};
 
 export default HomeContainer;
